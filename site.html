@@ -1,0 +1,40 @@
+<html ng-app='game'>
+	<head>
+		<link rel="stylesheet" type="text/css" href="mysite.css">
+		<script src="js/angular.min (1).js"> </script>
+		<script src="js/main.js"> </script>
+		<script src="js/service.js"> </script>
+		<title>Space</title>
+	</head>
+	
+	<body ng-controller="GalleryController">
+
+	<div class="classHead"> 
+		<h1>All About Space</h1>
+	</div>
+	
+	<div class="classMenu">
+		<h2>Menu</h2>
+	</div>
+
+	<div class="classContent"> 		
+		<div class="classDiv" ng-repeat="imageModel in images">
+			<p><b>{{imageModel.name}}</b></p>
+			<img src="{{imageModel.URL}}" ng-click="showButtons($index)">
+			<!--<input type="text" width="40" ng-model="imageModel">-->
+			<input class="classButton" type="text" width="40" ng-model="imageModel.name" style="display:{{imageModel.isVisible}}">
+			<input class="classButton" type="button" value=">" ng-click="moveImageToRight($index)" style="display:{{imageModel.isVisible}}">
+			<input class="classButton" type="button" value="<" ng-click="moveImageToLeft($index)" style="display:{{imageModel.isVisible}}">
+			<input class="classButton" type="button" value="del" ng-click="deleteImage($index)" style="display:{{imageModel.isVisible}}">
+		</div>
+	</div>
+	
+	<footer class="classFooter">
+		<input type="text" width="40" ng-model="imageName">
+		<input type="text" width="40" ng-model="imageURL">
+		<input type="button" value="add" ng-click="addImage()">
+		<a href="./tab.html" target="_blank"><p>tab</p></a>
+	</footer>
+	
+	</body>
+</html>

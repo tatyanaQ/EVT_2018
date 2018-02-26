@@ -1,0 +1,44 @@
+.classHead {
+	color:#000066;
+	height: 100px;
+	background-color: #1E90FF;	
+	text-align:center;
+ }
+ 
+ .classMenu {
+	 color:#000066;
+	 width:calc(20%);
+	 height:800px;
+	 background-color: #ffff66;
+	 display:inline-block;
+	 vertical-align:top;
+	 text-align:center;
+ }
+ 
+ .classContent {
+	 width:calc(79%);
+	 height:800px;
+	 background-color:#c9ff99;
+	 display:inline-block;
+	 vertical-align:top;
+ }
+ 
+ .classContent img {
+	 max-width:300px;
+	 
+ }
+ 
+ .classDiv {
+	 display:inline-block;
+	 vertical-align:top;
+	 text-align:center;
+	 color:#000066;
+ }
+ 
+ .classButton{
+	 vertical-align:bottom;
+ }
+ 
+ .classFooter{
+	 text-align:center;
+ }
