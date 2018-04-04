@@ -3,50 +3,45 @@ angular.module('game')
 		
 				
 		var images = [
-			createImage("Mars", "http://mks-onlain.ru/wp-content/uploads/2016/08/Mars.jpg"), 
-			createImage("Gagarin",'https://24smi.org/public/media/2017/4/11/%D0%93%D0%B0%D0%B3%D0%B0%D1%80%D0%B8%D0%BD%20%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D1%82%20%D0%B3%D0%BE%D0%BB%D1%83%D0%B1%D1%8F%2C%20%D0%BF%D0%BE%D0%B4%D0%B0%D1%80%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%B5%D0%BC%D1%83%20%D0%B1%D0%BE%D0%BB%D0%B3%D0%B0%D1%80%D1%81%D0%BA%D0%B8%D0%BC%D0%B8%20%D0%BF%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D0%B0%D0%BC%D0%B8_PiU3vtK.jpg'),
-			createImage("ISS",'http://oboitd.ru/images/goods/big/20160425090938_Kosmos_p25017.jpg'),
-			createImage("Weightlessness",'https://images2.popmeh.ru/upload/default/51a/51a2f19520d5b1e12cad2bd0c7a09341.jpg')];
+			createImage("Mars", "Red planet", "http://mks-onlain.ru/wp-content/uploads/2016/08/Mars.jpg"), 
+			createImage("Gagarin", "First in the open space", 'https://24smi.org/public/media/2017/4/11/%D0%93%D0%B0%D0%B3%D0%B0%D1%80%D0%B8%D0%BD%20%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D1%82%20%D0%B3%D0%BE%D0%BB%D1%83%D0%B1%D1%8F%2C%20%D0%BF%D0%BE%D0%B4%D0%B0%D1%80%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%B5%D0%BC%D1%83%20%D0%B1%D0%BE%D0%BB%D0%B3%D0%B0%D1%80%D1%81%D0%BA%D0%B8%D0%BC%D0%B8%20%D0%BF%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D0%B0%D0%BC%D0%B8_PiU3vtK.jpg'),
+			createImage("ISS", "International Space Station", 'http://oboitd.ru/images/goods/big/20160425090938_Kosmos_p25017.jpg'),
+			createImage("Weightlessness", "g = 0", 'https://images2.popmeh.ru/upload/default/51a/51a2f19520d5b1e12cad2bd0c7a09341.jpg'),
+			createImage("bgnm,./", "hnjmk", 'http://www.thisiscolossal.com/wp-content/uploads/2014/03/120430.gif')];
+			
+		var users = [
+			createUsers("user", "12345", false), 
+			createUsers("admin", "q12345", true)];
 		
 		return {
-		/*	getAll: getAllFunc, //ÙÛÌÍˆËˇ, ‚ÓÁ‚‡˘‡˛˘‡ˇ Ï‡ÒÒË‚
+		/*	getAll: getAllFunc, //—Ñ—É–Ω–∫—Ü–∏—è, –≤–æ–∑–≤—Ä–∞—â–∞—é—â–∞—è –º–∞—Å—Å–∏–≤
 			initFirstImages: initFirstImages,
 			addNewImg:addNewImg,*/
 			Images:images,
 			deleteImage:deleteImage,
 			moveImageToLeft:moveImageToLeft,
 			moveImageToRight:moveImageToRight,
-			addImage:addImage
+			addImage:addImage,
+			Users:users,
+			login:login
 		};
-		
-		/*function addNewImg(url){
-			images.push(createImage('https://d1u5p3l4wpay3k.cloudfront.net/overwatch_gamepedia/d/d0/Mei-portrait.png'));
-			return images;
-		}
-		
-		function getAllFunc(){
-			return images;	
-		}
-		
-		function initFirstImages(){
-			images.push(createImage('https://cdnb.artstation.com/p/assets/images/images/002/401/145/large/dave-greco-meifinal.jpg?1461291763'));
-			images.push(createImage('https://mfiles.alphacoders.com/653/653165.jpg'));
-			images.push(createImage('http://cdn3.twinfinite.net/wp-content/uploads/2017/08/meianimatedshort.jpg'));
+				
+		function createImage(name_, description_, URL_){
 			
-			return images;
-		}*/
-		
-		
-		function createImage(name_, URL_, isVisible_){
+			var substringArray = URL_.split(".");
 			return {
 				name:name_,
+				description:description_,
 				URL:URL_,
-				isVisible:isVisible_ ? isVisible_ :  'none'
+				isFullSize:false,
+				isPencilShown:false,
+				areButtonsShown:false,
+				extention: substringArray[substringArray.length-1]
 			};
 		}
 		
-		function addImage(imageName, imageURL){
-				images.push(createImage(imageName, imageURL));
+		function addImage(imageName, imageDescription, imageURL){
+				images.push(createImage(imageName, imageDescription, imageURL));
 				return images;
 			}
 		
@@ -57,7 +52,7 @@ angular.module('game')
 			
 		 function moveImageToRight(index)
 			{
-				var img = createImage(images[index].name, images[index].URL, images[index].isVisible);
+				var img = images[index]; 
 				var nextIndex;
 				if (index < images.length-1) nextIndex = index+1;
 				else nextIndex = 0;
@@ -70,7 +65,7 @@ angular.module('game')
 		function moveImageToLeft(index)
 		{
 				
-			var img = createImage(images[index].name, images[index].URL, images[index].isVisible);
+			var img = images[index]; 
 			var nextIndex;
 			if (index > 0) nextIndex = index-1;
 			else nextIndex = images.length-1;
@@ -78,5 +73,22 @@ angular.module('game')
 			images[index] = images[nextIndex];
 			images[nextIndex] = img;
 			return images;
+		}
+		
+		function createUsers(name_, password_, isAdmin_){
+			return {
+				lgn:name_,
+				passrd:password_,
+				isAdmin: isAdmin_
+			};
+		}
+		
+		function login(login_, password_) {
+			var myUser;
+			users.forEach(function(currentUser){
+				if (currentUser.lgn == login_ && currentUser.passrd == password_) myUser = currentUser;
+			});
+			
+			return myUser;		 
 		}
 	});
