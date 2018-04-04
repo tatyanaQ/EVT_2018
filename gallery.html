@@ -1,0 +1,14 @@
+	<div> 	
+			<div class="classDiv" ng-repeat="imageModel in images">
+				<p><b>{{imageModel.name}}</b></p>
+				<img ng-class="{'classPreview': !imageModel.isFullSize, 'classFullSize': imageModel.isFullSize, 'classJpg': imageModel.extention == 'jpg', 'classPng': imageModel.extention == 'png'}" src="{{imageModel.URL}}" ng-mouseover="showPencil($index)" ng-mouseout="hidePencil($index)" ng-click="openImage($index)">
+				<input ng-show="imageModel.isPencilShown" class="classPencil" type="button" ng-click = "showButtons($index)" value="pencil" ng-mouseover="showPencil($index)">
+				<div ng-show="imageModel.areButtonsShown">
+					<input class="classButton" type="text" width="40" ng-model="imageModel.name">
+					<input class="classButton"  type="text" width="40" ng-model="imageModel.description" >
+					<input class="classButton"  type="button" value=">" ng-click="moveImageToRight($index)" >
+					<input class="classButton"  type="button" value="<" ng-click="moveImageToLeft($index)" >
+					<input class="classButton"  type="button" value="del" ng-click="deleteImage($index)" >
+				</div>
+			</div>
+	</div>
