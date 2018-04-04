@@ -4,8 +4,19 @@
 	background-color: #1E90FF;	
 	text-align:center;
  }
+ .classJpg{
+	 border:4px solid #ff0000;
+ }
  
- .classMenu {
+ .classPng{
+	 border:4px solid #0033cc;
+ }
+ 
+ .classHead a{
+	  display:inline-block;
+ }
+ 
+ /*.classMenu {
 	 color:#000066;
 	 width:calc(20%);
 	 height:800px;
@@ -13,18 +24,23 @@
 	 display:inline-block;
 	 vertical-align:top;
 	 text-align:center;
- }
+ }*/
  
  .classContent {
-	 width:calc(79%);
+	 width:calc(100%);
 	 height:800px;
 	 background-color:#c9ff99;
 	 display:inline-block;
 	 vertical-align:top;
  }
  
- .classContent img {
-	 max-width:300px;
+ .classPreview {
+	 max-width:120px;
+	 
+ }
+ 
+  .classFullSize {
+	 max-width:500px;
 	 
  }
  
@@ -36,9 +52,18 @@
  }
  
  .classButton{
-	 vertical-align:bottom;
+	display:block;
+	
  }
  
- .classFooter{
-	 text-align:center;
+  .classPencil{
+	display:block;
+	margin-top:-20px;
+	position:fixed;
+	
  }
+ 
+ .classTextArea{
+	width: calc(50%);
+	height: calc(50%);
+}
